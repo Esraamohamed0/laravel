@@ -19,6 +19,7 @@
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
   </div>
   <br>
-  <button type="submit" class="btn btn-success"></a>Update</button>
+  <x-button type="submit" class="btn btn-success"></a>Update</x-button>
+  
 </form>
 @endsection

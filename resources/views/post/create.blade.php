@@ -19,6 +19,8 @@
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
   </div>
   <br>
-  <button type="submit" class="btn btn-success"></a>create</button>
+  <!-- <button type="submit" class="btn btn-success"></a>create</button> -->
+  <x-button type="submit" class="btn btn-success">create</x-button>
+
 </form>
 @endsection
