@@ -3,7 +3,7 @@
 @section('title') Show @endsection
 
 @section('content')
-<form action="{{route('posts.index')}}">
+<form action="{{route('posts.store')}}">
   <div class="form-group">
     <label for="exampleInputEmail1">Titel</label>
     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
