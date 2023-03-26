@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\PostController;
-
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,22 +19,39 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
 
 
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::group(['middleware' => ['auth']],function(){
 
-Route::post('/posts',[PostController::class,'store'])->name('posts.store');
-
-
-Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 
-Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    Route::post('/posts',[PostController::class,'store'])->name('posts.store');
+    
+    
+    Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+    
+    
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+    
+    
+    Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('posts.destroy');
+    
+    
+    Route::put('/posts', [PostController::class, 'update'])->name('posts.update');
+
+
+    Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+
+});
+
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+Route::get("/posts/removeOld",[PostController::class, "removeOldPosts"]);
 
 
 
+Auth::routes();
 
-
-
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
